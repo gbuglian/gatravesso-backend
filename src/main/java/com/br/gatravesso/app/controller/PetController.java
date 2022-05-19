@@ -33,7 +33,7 @@ public class PetController {
     }
 
     @GetMapping(
-            value = "/bsuca_pet",
+            value = "/busca_pet",
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PetDTO>> buscaTodosPet (){
         return ResponseEntity.ok(dtoMapper.toDtoList(petService.buscaTodosPet()));
