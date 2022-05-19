@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: gatravesso
+  jmx:
+    enabled: true
+  main:
+    allow-bean-definiton-overriding: true
+    banner-mode: off
+  profiles:
+    active: local
+  datasource:
+    continue-on-error: true
+  jackson:
+    time-zone: America/Sao_Paulo
+  jpa:
+    hibernate:
+      jdbc:
+        time_zone: America/Sao_Paulo
+      ddl-auto: none
+      integration:
+        envers:
+          enabled: false
+    show-sql: true
+    open-in-view: false
+
+management:
+  address: 127.0.0.1
+  security:
+    enabled: false
+
+server:
+  port: 8081
+  servlet:
+    context-path: /gatravesso/v1
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.controllers: INFO
+    org.hibernate: INFO
+  group:
+    tomcat: org.apache.catalina, org.apache.coyote, org.apache.tomcat, org.apache.catalina.core.ContainerBase
+    level.tomcat: OFF
+    ConsoleHandler:
+      level: ALL

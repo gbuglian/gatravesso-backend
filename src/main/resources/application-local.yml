@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_gatravesso
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: ${MYSQL_USERNAME:root}
+      password: ${MYSQL_PASSWORD:Abcd123!!!}
+      connection-timeout: 30000
+      maxium-pool-size: 5
+      pool-name: pool-gatravesso
