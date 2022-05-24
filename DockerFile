@@ -6,4 +6,4 @@ COPY target/spring-app-0.0.1-SNAPSHOT
 
 EXPOSE 8081
 
-ENTRYPOINT [ "java", "/app/aula${APP_NAME}" ]
+ENTRYPOINT [ "java", "/app/${APP_NAME}" ]
