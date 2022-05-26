@@ -5,12 +5,14 @@ import com.br.gatravesso.app.model.Pet;
 import com.br.gatravesso.app.mysql.mapper.PetEntityMapper;
 import com.br.gatravesso.app.mysql.repository.PetRepository;
 import com.br.gatravesso.app.request.PetDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PetServiceImpl {
 
     private final PetRepository repository;
@@ -23,9 +25,9 @@ public class PetServiceImpl {
     }
 
     public Pet buscaPet(Long idPet) {
-
-       if (repository.findById(idPet).isPresent()){
-           return mapper.toModel(repository.findById(idPet).get());
+        var result  = repository.findById(idPet);
+       if (result.isPresent()){
+           return mapper.toModel(result.get());
        }
         else
             throw new IllegalArgumentException("Pet não encontrado");
@@ -40,11 +42,5 @@ public class PetServiceImpl {
         }
 
         return Collections.emptyList();
-    }
-
-    public PetServiceImpl(PetRepository repository, PetEntityMapper entityMapper, PetMapper mapper) {
-        this.repository = repository;
-        this.entityMapper = entityMapper;
-        this.mapper = mapper;
     }
 }

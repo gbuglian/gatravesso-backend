@@ -3,6 +3,7 @@ package com.br.gatravesso.app.controller;
 import com.br.gatravesso.app.request.PetDTO;
 import com.br.gatravesso.app.request.mapper.PetDTOMapper;
 import com.br.gatravesso.app.service.impl.PetServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pet")
+@RequiredArgsConstructor
 public class PetController {
 
     private final PetServiceImpl petService;
@@ -37,12 +39,5 @@ public class PetController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PetDTO>> buscaTodosPet (){
         return ResponseEntity.ok(dtoMapper.toDtoList(petService.buscaTodosPet()));
-    }
-
-
-
-    public PetController(PetServiceImpl petService, PetDTOMapper dtoMapper) {
-        this.petService = petService;
-        this.dtoMapper = dtoMapper;
     }
 }

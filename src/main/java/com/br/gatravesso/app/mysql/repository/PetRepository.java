@@ -14,7 +14,7 @@ public interface PetRepository extends CrudRepository<PetEntity, Long> {
     Optional<PetEntity> findById(Long aLong);
 
     @Query(
-            "Select p from PetEntity p" +
+            "Select p from PetEntity p " +
                     "where p.disponivelAdocao = 'S'")
     List<PetEntity> buscaTodosDisponiveis();
 }
