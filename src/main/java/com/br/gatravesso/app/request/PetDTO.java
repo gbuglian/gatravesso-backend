@@ -15,7 +15,6 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class PetDTO {
 
-//    @NotNull(message = "ID Pet não pode ser nulo")
     @JsonProperty
     private Long idPet;
 
@@ -32,4 +31,11 @@ public class PetDTO {
     @Pattern(regexp = "([F|M])", message = "Valores aceitos F|M")
     @JsonProperty
     private String sexo;
+
+    @NotNull(message = "Descrição do Pet é obrigatória")
+    private String descricaoPet;
+
+    @NotNull(message = "Informe disponibilidade")
+    @Pattern(regexp = "([S|N])", message = "Valores aceitos S|N")
+    private String disponivelAdocao;
 }

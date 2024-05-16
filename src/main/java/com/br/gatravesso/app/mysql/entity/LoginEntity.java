@@ -9,25 +9,16 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "TB_PET")
+@Table(name = "TB_USER")
 @NoArgsConstructor
-public class PetEntity {
+public class LoginEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPet;
+    private String userId;
 
-    private String nomePet;
+    @Column(unique = true)
+    private String usuario;
 
-    private Long idade;
-
-    private String sexo;
-
-    private String descricaoPet;
-
-    private Character disponivelAdocao;
+    private String senha;
 }
-
-
-
-

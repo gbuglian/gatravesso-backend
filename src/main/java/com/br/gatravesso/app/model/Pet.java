@@ -15,5 +15,7 @@ public class Pet {
     private String nomePet;
     private Long idade;
     private String sexo;
+    private String descricaoPet;
+    private Character disponivelAdocao;
 
 }
