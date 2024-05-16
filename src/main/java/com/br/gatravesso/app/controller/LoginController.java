@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
@@ -26,12 +25,13 @@ public class LoginController {
     private final PasswordEncoder encoder;
     private final LoginDTOMapper mapper;
 
-    @PostMapping(value = "/login",
+    @PostMapping(value = "/criaLogin",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Login> salvarUsuario(@RequestBody LoginDTO login) {
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void salvarUsuario(@RequestBody LoginDTO login) throws Exception {
         login.setSenha(encoder.encode(login.getSenha()));
-        return ResponseEntity.ok(loginService.salvaUsuario(mapper.ToModel(login)));
+        loginService.salvaUsuario(mapper.ToModel(login));
     }
 
     @GetMapping(value = "/buscaLogin",
